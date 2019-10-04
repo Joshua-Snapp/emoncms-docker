@@ -25,10 +25,11 @@ COPY config/php.ini /usr/local/etc/php/
 # ADD ./emoncms /var/www/html
 
 # Clone in master Emoncms repo & modules - overwritten in development with local FS files
-RUN git clone https://github.com/emoncms/emoncms.git /var/www/html
-RUN git clone https://github.com/emoncms/dashboard.git /var/www/html/Modules/dashboard
-RUN git clone https://github.com/emoncms/graph.git /var/www/html/Modules/graph
-RUN git clone https://github.com/emoncms/app.git /var/www/html/Modules/app
+RUN git clone -b stable --single-branch --depth 1 https://github.com/emoncms/emoncms.git /var/www/html
+RUN git clone -b stable --single-branch --depth 1 https://github.com/emoncms/dashboard.git /var/www/html/Modules/dashboard
+RUN git clone -b stable --single-branch --depth 1 https://github.com/emoncms/graph.git /var/www/html/Modules/graph
+RUN git clone -b stable --single-branch --depth 1 https://github.com/emoncms/app.git /var/www/html/Modules/app
+RUN git clone -b stable --single-branch --depth 1 https://github.com/emoncms/device.git /var/www/html/Modules/device
 
 COPY docker.settings.php /var/www/html/settings.php
 
